@@ -1,0 +1,7 @@
+# Blueprint Render (opsional). Dengan file ini Render membuat layanannya otomatis dari repo GitHub.
+services:
+  - type: web
+    name: signbridge-ai
+    runtime: docker
+    plan: free
+    healthCheckPath: /

@@ -1,0 +1,9 @@
+# Cadangan jika Anda belum membuat versi "pip freeze" (lihat panduan langkah 3).
+# Lebih baik pakai versi PERSIS dari komputer Anda agar model (.pkl) kompatibel.
+Flask
+gunicorn
+mediapipe==0.10.21
+scikit-learn
+numpy<2
+scipy
+joblib

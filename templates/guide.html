@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Panduan Penggunaan</h2>
+        <p class="text-muted">Ikuti langkah-langkah di bawah ini untuk menggunakan SignBridge AI.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+                <h4 class="fw-bold text-cyan"><i class="fa-solid fa-video me-2"></i>1. Penerjemah Isyarat ke Teks</h4>
+                <ul>
+                    <li>Buka halaman <strong>Penerjemah Isyarat</strong>.</li>
+                    <li>Klik tombol <strong>Mulai Kamera</strong> dan izinkan browser mengakses kamera Anda.</li>
+                    <li>Lakukan gerakan BISINDO yang sudah dilatih di depan kamera.</li>
+                    <li>Tunggu 1-2 detik, hasil deteksi akan muncul di bagian bawah video.</li>
+                </ul>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+                <h4 class="fw-bold text-cyan"><i class="fa-solid fa-keyboard me-2"></i>2. Penerjemah Teks ke Isyarat</h4>
+                <ul>
+                    <li>Buka halaman <strong>Penerjemah Teks</strong>.</li>
+                    <li>Ketik kata yang ingin dicari (contoh: HALO).</li>
+                    <li>Klik tombol <strong>Cari</strong> untuk melihat video/penjelasan gerakan.</li>
+                </ul>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>Batasan Sistem:</strong> Versi awal ini hanya dapat mengenali kosakata yang sudah ada di dalam dataset pelatihan. Sistem belum bisa menerjemahkan kalimat utuh secara tata bahasa.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

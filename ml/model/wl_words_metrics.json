@@ -1,0 +1,9 @@
+{
+  "accuracy_new_signer_plain": 0.7618,
+  "accuracy_new_signer_mirror_aug": 0.6991,
+  "mirror_aug_used": false,
+  "chance": 0.0312,
+  "videos": 1600,
+  "model_size_mb": 3.8,
+  "note": "Lisensi data CC BY-NC 4.0 berlaku juga untuk model turunan (non-komersial)."
+}

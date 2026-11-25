@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="fw-bold mb-4">Tentang SignBridge AI</h2>
+            <p class="lead text-muted mb-5">
+                SignBridge AI adalah media penerjemah dua arah Bahasa Isyarat Indonesia (BISINDO) berbasis Artificial Intelligence untuk mendukung komunikasi inklusif.
+            </p>
+            
+            <div class="card shadow-sm border-0 rounded-4 p-4 text-start mb-4">
+                <h4 class="fw-bold text-cyan mb-3">Teknologi yang Digunakan</h4>
+                <ul>
+                    <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Bootstrap.</li>
+                    <li><strong>Backend:</strong> Python & Flask.</li>
+                    <li><strong>Computer Vision:</strong> MediaPipe Hands (Deteksi 21 Landmark).</li>
+                    <li><strong>Machine Learning:</strong> Random Forest Classifier (Scikit-learn).</li>
+                    <li><strong>Database:</strong> SQLite.</li>
+                </ul>
+            </div>
+
+            <div class="alert alert-danger">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                <strong>Pernyataan Penting:</strong> Website ini adalah prototipe media bantu komunikasi untuk proyek perkuliahan. Website ini <strong>bukan</strong> pengganti penerjemah bahasa isyarat profesional (Juru Bahasa Isyarat).
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

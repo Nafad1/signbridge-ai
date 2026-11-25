@@ -1,0 +1,30 @@
+/* Tata letak Kamus: tiga bagian (Abjad, Angka, Kata), kartu mengalir ke samping lalu turun. */
+html { scroll-behavior: smooth; }
+
+.dict-section { margin-bottom: 3rem; scroll-margin-top: 90px; }
+.dict-section-head { display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1.25rem;
+    padding-bottom: .5rem; border-bottom: 2px solid var(--cyan, #00b4d8); }
+.dict-section-head h2 { margin: 0; font-size: 1.6rem; font-weight: 700; }
+
+/* Grid otomatis: jumlah kolom menyesuaikan lebar layar, urutan kiri -> kanan lalu baris berikutnya */
+.dict-grid { display: grid; gap: 1rem; }
+.dict-grid-compact { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }   /* huruf & angka */
+.dict-grid-words   { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.25rem; }  /* kata */
+
+/* Kotak video */
+.dict-media { height: 190px; }
+.dict-media-compact { height: 130px; }
+.dict-title-compact { font-size: 2rem; line-height: 1; margin-bottom: .6rem; }
+.dict-skeleton-note { font-size: .7rem; }
+
+/* Pintasan bagian */
+.dict-jump { display: flex; justify-content: center; flex-wrap: wrap; gap: .5rem; }
+.dict-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .9rem; border-radius: 999px;
+    border: 1px solid var(--cyan, #00b4d8); color: var(--navy, #0a192f); text-decoration: none; font-weight: 600; }
+.dict-pill span { background: var(--navy, #0a192f); color: #fff; border-radius: 999px; padding: 0 .5rem; font-size: .8rem; }
+.dict-pill:hover { background: var(--cyan, #00b4d8); color: #fff; }
+
+@media (max-width: 575.98px) {
+    .dict-grid-compact { grid-template-columns: repeat(2, 1fr); }
+    .dict-section-head h2 { font-size: 1.35rem; }
+}

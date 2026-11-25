@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="mb-4">Jembatan Komunikasi <br><span class="text-cyan">Tanpa Batas</span></h1>
+        <p class="mb-5 mx-auto" style="max-width: 700px;">
+            SignBridge AI adalah media penerjemah dua arah Bahasa Isyarat Indonesia (BISINDO) berbasis Artificial Intelligence untuk mendukung komunikasi inklusif.
+        </p>
+        <a href="{{ url_for('translator') }}" class="btn btn-cyan btn-lg me-2">Mulai Terjemahkan Isyarat</a>
+        <a href="{{ url_for('dictionary') }}" class="btn btn-outline-light btn-lg rounded-pill px-4">Lihat Kamus</a>
+    </div>
+</section>
+
+<!-- FITUR UTAMA -->
+<section class="container py-5 mt-4">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Fitur Utama Kami</h2>
+        <p class="text-muted">Dua fitur canggih dalam satu platform terintegrasi.</p>
+    </div>
+    
+    <div class="row g-4 justify-content-center">
+        <!-- Kartu 1 -->
+        <div class="col-md-5">
+            <div class="card feature-card p-4 text-center">
+                <div class="d-flex justify-content-center">
+                    <div class="icon-box icon-cyan">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                </div>
+                <h4 class="fw-bold mt-2">Sign to Text</h4>
+                <p class="text-muted">Terjemahkan gerakan tangan BISINDO Anda ke dalam teks secara langsung menggunakan kamera dan AI.</p>
+                <a href="{{ url_for('translator') }}" class="btn btn-outline-info rounded-pill mt-auto">Coba Fitur</a>
+            </div>
+        </div>
+        <!-- Kartu 2 -->
+        <div class="col-md-5">
+            <div class="card feature-card p-4 text-center">
+                <div class="d-flex justify-content-center">
+                    <div class="icon-box icon-purple">
+                        <i class="fa-solid fa-keyboard"></i>
+                    </div>
+                </div>
+                <h4 class="fw-bold mt-2">Text to Sign</h4>
+                <p class="text-muted">Ketik kata atau kalimat, dan sistem akan menampilkan video gerakan bahasa isyarat yang sesuai.</p>
+                <a href="{{ url_for('text_to_sign') }}" class="btn btn-outline-secondary rounded-pill mt-auto">Coba Fitur</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CARA KERJA SINGKAT -->
+<section class="bg-light-navy text-white py-5 mt-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Bagaimana AI Bekerja?</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <i class="fa-solid fa-camera fa-3x text-cyan mb-3"></i>
+                <h5>1. Kamera Menangkap</h5>
+                <p class="text-muted">Kamera merekam gerakan tangan Anda secara real-time.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fa-solid fa-hand fa-3x text-cyan mb-3"></i>
+                <h5>2. Deteksi Landmark</h5>
+                <p class="text-muted">MediaPipe mendeteksi 21 titik penting pada tangan.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fa-solid fa-microchip fa-3x text-cyan mb-3"></i>
+                <h5>3. AI Memprediksi</h5>
+                <p class="text-muted">Model Random Forest mengenali pola gerakan dan mengubahnya menjadi teks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

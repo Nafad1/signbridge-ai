@@ -1,0 +1,135 @@
+{
+  "dataset_rows": 14493,
+  "classes": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
+  ],
+  "accuracy_random_split": 0.9676,
+  "accuracy_sequential_holdout": 0.9653,
+  "weakest_letters": [
+    {
+      "letter": "B",
+      "f1": 0.885
+    },
+    {
+      "letter": "M",
+      "f1": 0.908
+    },
+    {
+      "letter": "Y",
+      "f1": 0.909
+    },
+    {
+      "letter": "N",
+      "f1": 0.912
+    },
+    {
+      "letter": "E",
+      "f1": 0.922
+    }
+  ],
+  "model_size_mb": 5.5,
+  "note": "Data lama hanya dari satu penanda; angka \"orang/HP baru\" (jika ada) adalah perkiraan yang lebih jujur.",
+  "accuracy_old_model_on_new": {
+    "Sanjaya": 0.3936,
+    "Trunojoyo": 0.4788
+  },
+  "accuracy_leave_one_dataset_out": {
+    "Sanjaya": 0.4839,
+    "Trunojoyo": 0.6661
+  },
+  "extra_sources": {
+    "Sanjaya": 2457,
+    "Trunojoyo": 6428
+  },
+  "accuracy_group_cv_new_people": 0.7865,
+  "old_data_weight": 0.25,
+  "weakest_letters_new_people": [
+    {
+      "letter": "Q",
+      "f1": 0.355
+    },
+    {
+      "letter": "D",
+      "f1": 0.415
+    },
+    {
+      "letter": "Y",
+      "f1": 0.456
+    },
+    {
+      "letter": "P",
+      "f1": 0.579
+    },
+    {
+      "letter": "C",
+      "f1": 0.596
+    }
+  ],
+  "most_confused_new_people": [
+    {
+      "true": "D",
+      "predicted": "P",
+      "count": 121
+    },
+    {
+      "true": "J",
+      "predicted": "I",
+      "count": 87
+    },
+    {
+      "true": "O",
+      "predicted": "I",
+      "count": 78
+    },
+    {
+      "true": "P",
+      "predicted": "D",
+      "count": 68
+    },
+    {
+      "true": "C",
+      "predicted": "O",
+      "count": 64
+    },
+    {
+      "true": "I",
+      "predicted": "J",
+      "count": 61
+    },
+    {
+      "true": "R",
+      "predicted": "U",
+      "count": 61
+    },
+    {
+      "true": "Q",
+      "predicted": "K",
+      "count": 58
+    }
+  ]
+}

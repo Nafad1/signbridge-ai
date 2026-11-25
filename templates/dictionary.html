@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{# Kartu satu entri kamus. compact=True untuk huruf & angka (kartu kecil, tanpa deskripsi). #}
+{% macro card(w, compact) %}
+<div class="dictionary-item dict-card">
+    <div class="card h-100 feature-card border-0 shadow-sm">
+        <div class="card-body text-center {{ 'p-3' if compact else 'p-4' }}">
+            <h3 class="fw-bold text-cyan {{ 'dict-title-compact' if compact else 'mb-2' }}">{{ w.word }}</h3>
+            {% if not compact %}
+            <span class="badge bg-navy mb-3 px-3 py-2 rounded-pill">{{ w.category }}</span>
+            <p class="text-muted small mb-3">{{ w.description }}</p>
+            {% endif %}
+
+            <div class="dict-media {{ 'dict-media-compact' if compact else '' }} bg-dark rounded-3 d-flex align-items-center justify-content-center overflow-hidden">
+                {% if w.video %}
+                <video data-src="{{ w.video }}#t=1" controls muted loop playsinline preload="none" class="h-100" style="max-width:100%; object-fit: contain;"></video>
+                {% elif w.pose_key %}
+                <canvas width="300" height="150" class="h-100" data-pose-key="{{ w.pose_key }}" data-pose-group="{{ w.pose_group }}"></canvas>
+                {% else %}
+                <span class="text-white small"><i class="fa-solid fa-video me-2"></i>Video Belum Tersedia</span>
+                {% endif %}
+            </div>
+            {% if w.kind == 'skeleton' %}
+            <div class="small text-muted mt-2 dict-skeleton-note">
+                <i class="fa-solid fa-hand me-1"></i>{{ 'Animasi kerangka' if compact else 'Animasi kerangka tangan, bukan rekaman penanda' }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% block content %}
+{% set letters = words | selectattr('category', 'equalto', 'Abjad') | sort(attribute='word') | list %}
+{% set numbers = words | selectattr('category', 'equalto', 'Angka') | list %}
+{% set others = words | rejectattr('category', 'in', ['Abjad', 'Angka']) | sort(attribute='word') | list %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dictionary.css') }}">
+
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Kamus BISINDO</h2>
+        <p class="text-muted">Jelajahi daftar kosakata Bahasa Isyarat Indonesia yang tersedia di sistem kami.</p>
+    </div>
+
+    <!-- Pencarian Cepat (Filter) -->
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-6">
+            <input type="text" id="filter-input" class="form-control form-control-lg shadow-sm" placeholder="Cari kata di kamus...">
+        </div>
+    </div>
+
+    <!-- Pintasan ke tiap bagian -->
+    <nav class="dict-jump text-center mb-5" aria-label="Pintasan bagian kamus">
+        <a class="dict-pill" href="#abjad" data-target="abjad">Abjad A–Z <span>{{ letters | length }}</span></a>
+        <a class="dict-pill" href="#angka" data-target="angka">Angka 1–10 <span>{{ numbers | length }}</span></a>
+        <a class="dict-pill" href="#kata" data-target="kata">Kata <span>{{ others | length }}</span></a>
+    </nav>
+
+    <div id="dictionary-list">
+        <!-- 1. Abjad A-Z -->
+        <section class="dict-section" id="abjad">
+            <div class="dict-section-head">
+                <h2>Abjad <small class="text-muted">A–Z</small></h2>
+                <span class="badge bg-navy rounded-pill">{{ letters | length }}</span>
+            </div>
+            <div class="dict-grid dict-grid-compact">
+                {% for w in letters %}{{ card(w, true) }}{% endfor %}
+            </div>
+        </section>
+
+        <!-- 2. Angka 1-10 (urutan angka, bukan urutan teks) -->
+        <section class="dict-section" id="angka">
+            <div class="dict-section-head">
+                <h2>Angka <small class="text-muted">1–10</small></h2>
+                <span class="badge bg-navy rounded-pill">{{ numbers | length }}</span>
+            </div>
+            <div class="dict-grid dict-grid-compact">
+                {% for n in range(1, 11) %}{% for w in numbers if w.word == n | string %}{{ card(w, true) }}{% endfor %}{% endfor %}
+            </div>
+        </section>
+
+        <!-- 3. Kata (urut A-Z) -->
+        <section class="dict-section" id="kata">
+            <div class="dict-section-head">
+                <h2>Kata</h2>
+                <span class="badge bg-navy rounded-pill">{{ others | length }}</span>
+            </div>
+            <div class="dict-grid dict-grid-words">
+                {% for w in others %}{{ card(w, false) }}{% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Pesan jika tidak ada kata yang cocok saat difilter -->
+    <div id="no-result" class="text-center mt-5 d-none">
+        <h5 class="text-muted">Kata tidak ditemukan dalam daftar.</h5>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/sign_player.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dictionary.js') }}"></script>
+{% endblock %}
